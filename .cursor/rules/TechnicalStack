@@ -1,0 +1,233 @@
+[PRD] 교환 일기: 감정의 온도 (Emotional Temperature)
+
+1. 프로젝트 개요
+
+
+
+
+
+대상 사용자: 사회적 가면으로 인해 감정적 고립을 느끼는 2030 직장인 및 대학생.
+
+
+
+앱의 목표: * 비언어적 매체(목소리, 그림)를 통한 심리적 배설구 제공.
+
+
+
+
+
+Firebase의 실시간 기능을 활용한 즉각적이고 따뜻한 상호작용 경험.
+
+
+
+AI 감정 분석 기반의 소규모(3인) 정서 공동체 형성.
+
+
+
+2. 핵심 기능 (Core Features)
+
+① AI 감정 동기화 & 실시간 매칭
+
+
+
+
+
+감정 분석: 사용자가 업로드한 음성/그림 데이터를 Firebase Cloud Functions를 통해 AI API(OpenAI 등)와 연동, 감정 온도(0~100) 산출.
+
+
+
+매칭 알고리즘: Firestore의 실시간 리스너를 활용하여 유사 온도 구간의 대기자 3명을 즉시 '온실(Greenhouse)'로 매칭.
+
+
+
+상태 알림: 매칭 성공 시 **FCM(Push Notification)**을 통해 사용자에게 즉시 알림.
+
+② 감각적 일기 기록 (Voice & Canvas)
+
+
+
+
+
+데이터 저장: 음성 파일(.m4a)과 그림 파일(.png)을 Firebase Cloud Storage에 저장.
+
+
+
+익명성 강화: Cloud Functions 내에서 오디오 변조 프로세싱을 거쳐 원본 목소리 보호 가능.
+
+
+
+자동 삭제: 24시간이 지난 온실 데이터는 Firestore에서 '비활성' 처리하여 휘발성 유지.
+
+③ 리액션 락 (Reaction Lock) 시스템
+
+
+
+
+
+잠금 로직: Firestore 내 온실 문서의 reaction_count 필드를 참조.
+
+
+
+작동: 본인을 제외한 멤버 2명에게 공감(스티커/보이스)을 남겨야만 자신의 다음 기록 권한 획득.
+
+
+
+실시간 업데이트: 타인의 리액션이 등록되면 Firestore 스냅샷을 통해 앱 화면에 즉각 반영.
+
+
+
+3. 기술 스택 (Technical Stack - Firebase Centric)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+구분
+
+
+
+기술 스택
+
+
+
+용도
+
+
+
+
+
+Frontend
+
+
+
+Flutter
+
+
+
+iOS/Android 크로스 플랫폼 개발
+
+
+
+
+
+Auth
+
+
+
+Firebase Auth
+
+
+
+구글/애플/익명 로그인 및 세션 관리
+
+
+
+
+
+Database
+
+
+
+Cloud Firestore
+
+
+
+유저 프로필, 온실 데이터, 실시간 채팅/기록 메타데이터
+
+
+
+
+
+Storage
+
+
+
+Cloud Storage
+
+
+
+음성 녹음 파일 및 드로잉 이미지 파일 호스팅
+
+
+
+
+
+Serverless
+
+
+
+Cloud Functions
+
+
+
+AI 감정 분석 연동, 매칭 로직 실행, 파일 포맷 변환
+
+
+
+
+
+Push
+
+
+
+FCM
+
+
+
+리액션 도착 및 온실 생성 알림
+
+
+
+4. 향후 추가 기능 (Roadmap)
+
+
+
+
+
+감정 아카이브: Firebase에 저장된 과거 온도를 시각화하여 '나의 마음 날씨 그래프' 제공.
+
+
+
+온도별 테마: 매칭된 그룹의 평균 온도에 따라 Firestore에서 실시간으로 배경 음악(ASMR) 스트리밍 경로 제공.
+
+
+
+안심 신고 시스템: 부적절한 음성/그림 업로드 시 AI 가드레일을 통한 자동 필터링 및 차단.
+
+
+
+5. 성공 지표 (Success Metrics)
+
+
+
+
+
+Daily Active Greenhouse (DAG): 하루에 생성되는 유효 온실(3인 매칭 완료)의 수.
+
+
+
+Reaction Completion Rate: 매칭된 사용자가 리액션 락을 해제하기 위해 공감을 남기는 비율.
+
+
+
+Average Session Duration: 텍스트가 없음에도 목소리와 그림을 통해 교류하는 평균 시간.
+
+
+
+Firebase Cost per User: 무료 티어 내 효율적인 데이터 호출을 통한 사용자당 비용 최적화 여부.

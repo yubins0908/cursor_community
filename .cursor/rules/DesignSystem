@@ -1,0 +1,70 @@
+# [컴포넌트 스타일 가이드] 교환 일기: 감정의 온도
+
+## 1. 전역 스타일 (Global Styles)
+- **Border Radius:** `24px` (모든 카드 및 버튼에 적용하여 부드러운 인상 강조)
+- **Shadow:** `0px 4px 20px rgba(44, 51, 51, 0.05)` (잉크가 종이에 스며든 듯한 은은한 그림자)
+- **Blur:** `Backdrop Blur 10px` (온실 내 플로팅 요소에 적용)
+
+---
+
+## 2. 버튼 컴포넌트 (Buttons)
+
+### ① Primary Action Button (작성 완료, 온도 측정)
+- **Background:** `#8E9775` (Sage Green)
+- **Text:** `#FAF7F0` (Off-White), 16px, Pretendard Semi-Bold
+- **Padding:** `16px 24px`
+- **Style:** 둥근 모서리, 클릭 시 미세한 햅틱 피드백 권장.
+
+### ② Mode Selection Button (기록 모드 선택)
+- **Background:** `#FFFFFF` (순백색)
+- **Border:** `1px solid #D4A373` (Sand Beige)
+- **Icon:** 각 모드별 아이콘 (24x24, 색상: #8E9775)
+- **Text:** `#2C3333`, 14px, Pretendard Medium
+- **Effect:** 선택 시 배경색이 `#F2F4ED`로 변경되며 보더 두께 증가.
+
+---
+
+## 3. 홈 화면 핵심 요소 (Home Components)
+
+### ① 감정 구체 (Emotional Orb)
+- **Shape:** `Circle` (정원형)
+- **Fill:** `Radial Gradient`
+  - *Center:* 감정 온도별 대표색 (예: 36.5°C -> #E28743)
+  - *Outer:* 투명도 0% 처리
+- **Animation:** 상하로 2~3px씩 천천히 움직이는 플로팅 효과 (`Duration: 3s, Infinite`)
+
+### ② 온실 정보 카드 (Greenhouse Status Card)
+- **Background:** `rgba(255, 255, 255, 0.6)` (반투명 화이트)
+- **Blur:** `Backdrop Filter: blur(8px)`
+- **Border:** `1px solid rgba(212, 163, 115, 0.3)`
+- **Content:** - 타이머 텍스트: `#A64B2A` (Error Color 활용하여 긴박감 부여), 12px, 나눔스퀘어
+
+---
+
+## 4. 일기 작성 컴포넌트 (Entry Components)
+
+### ① 글쓰기 텍스트 에디터 (Text Editor)
+- **Background:** `#FAF7F0` (종이 질감 텍스트 적용 가능)
+- **Font:** 나눔명조, 16px, Line-height 1.8
+- **Placeholder:** `#707070` ("이곳에 당신의 온기를 남겨주세요...")
+- **Caret Color:** `#8E9775`
+
+### ② 오디오 웨이브 비주얼라이저 (Audio Visualizer)
+- **Bar Color:** `#D4A373`
+- **Active Bar Color:** `#E28743`
+- **Height:** Max 40px, Min 4px
+- **Style:** 둥근 끝처리(Rounded Cap)
+
+---
+
+## 5. 리액션 및 상호작용 (Interaction)
+
+### ① 리액션 락 인디케이터 (Reaction Lock Indicator)
+- **Icon:** 자물쇠 모양 아이콘
+- **Background:** `rgba(44, 51, 51, 0.8)` (어두운 오버레이)
+- **Text:** `#FAF7F0`, 14px, "마음을 나누면 일기를 읽을 수 있어요"
+
+### ② 공감 스티커 (Empathy Stickers)
+- **Shape:** Soft Square (곡률 12px)
+- **Color:** 보조 색상(#E28743)의 파스텔톤 변형 버전 사용
+- **Interaction:** 클릭 시 1.2배 커지는 팝업 애니메이션
